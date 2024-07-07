@@ -1,22 +1,38 @@
 import { Worker } from 'worker_threads';
+import path from 'path';
 
-export function GET() {
+export function GET(req: any) {
+
     try {
-        // Create a new Worker object
-        const worker = new Worker('./app/api/bench/worker.js');
+        const numCores = 1
+        const data = Array.from({ length: 100_000_000 }, (_, i) => i + 1);
+        const chunkSize = Math.ceil(data.length / numCores);
+        const chunks = Array.from({ length: numCores }, (_, i) => data.slice(i * chunkSize, (i + 1) * chunkSize));
 
-        // Send data to the worker
-        worker.postMessage({ numbers: [1, 2, 3, 4, 5] });
+        console.log('Benchmark started');
+        console.time('Benchmark');
 
-        // Listen for messages from the worker
-        worker.on('message', (event: { sum: any; }) => {
-            console.log('Sum:', event.sum);
-        });
+        const workers = [];
+        let results: any[] = [];
+        for (let i = 0; i < numCores; i++) {
+            const workerFilePath = path.resolve(__dirname, './worker.js');
+            const worker = new Worker(workerFilePath, { workerData: chunks[i] });
+            workers.push(worker);
+            worker.on('message', (message) => {
+                results = results.concat(message);
+            });
+        }
 
-        return { status: 200, body: 'Success' };
+        Promise.all(workers.map(worker => new Promise((resolve) => worker.on('exit', resolve))))
+            .then(() => {
+                console.timeEnd('Benchmark');
+                console.log('Benchmark completed');
+            });
+
+        return new Response('Benchmark started', { status: 200 });
     }
     catch (error) {
         console.error(error);
-        return { status: 500, body: 'Internal Server Error' };
+        return new Response('Failed to start benchmark', { status: 500 });
     }
 }
