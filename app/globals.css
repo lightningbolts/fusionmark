@@ -31,3 +31,389 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Add different attributes */
+
+/* Buttons */
+
+@layer components {
+  .btn {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  }
+}
+
+/* Dropdowns */
+
+@layer components {
+  .dropdown {
+    @apply relative;
+  }
+
+  .dropdown-menu {
+    @apply absolute hidden bg-white border rounded shadow-lg;
+  }
+
+  .dropdown-menu.show {
+    @apply block;
+  }
+}
+
+/* Links */
+
+@layer components {
+  .link {
+    @apply text-blue-500;
+  }
+}
+
+/* Alerts */
+
+@layer components {
+  .alert {
+    @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative;
+  }
+
+  .alert.success {
+    @apply bg-green-100 border border-green-400 text-green-700;
+  }
+
+  .alert.danger {
+    @apply bg-red-100 border border-red-400 text-red-700;
+  }
+
+  .alert.info {
+    @apply bg-blue-100 border border-blue-400 text-blue-700;
+  }
+
+  .alert.warning {
+    @apply bg-yellow-100 border border-yellow-400 text-yellow-700;
+  }
+}
+
+/* Forms */
+
+@layer components {
+  .form-control {
+    @apply block w-full px-3 py-2 border rounded shadow-inner;
+  }
+
+  .form-control:focus {
+    @apply outline-none border-blue-500;
+  }
+
+  .form-label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+  }
+
+  .form-select {
+    @apply block w-full px-3 py-2 border rounded shadow-inner;
+  }
+
+  .form-select:focus {
+    @apply outline-none border-blue-500;
+  }
+
+  .form-select option {
+    @apply bg-white text-gray-800;
+  }
+
+  .form-select option:checked {
+    @apply bg-blue-500 text-white;
+  }
+
+  .form-select option:focus {
+    @apply bg-blue-500 text-white;
+  }
+
+  .form-select option:hover {
+    @apply bg-blue-500 text-white;
+  }
+
+  .form-select option:active {
+    @apply bg-blue-500 text-white;
+  }
+}
+
+/* Tables */
+
+@layer components {
+  .table {
+    @apply w-full border-collapse border border-gray-300;
+  }
+
+  .table th {
+    @apply bg-gray-200 border border-gray-300 px-4 py-2;
+  }
+
+  .table td {
+    @apply border border-gray-300 px-4 py-2;
+  }
+
+  .table tr:nth-child(even) {
+    @apply bg-gray-100;
+  }
+}
+
+/* Cards */
+
+@layer components {
+  .card {
+    @apply bg-white border border-gray-300 rounded shadow-lg;
+  }
+
+  .card-header {
+    @apply bg-gray-200 border-b border-gray-300 px-4 py-2;
+  }
+
+  .card-body {
+    @apply px-4 py-2;
+  }
+
+  .card-footer {
+    @apply bg-gray-200 border-t border-gray-300 px-4 py-2;
+  }
+}
+
+/* Modals */
+
+@layer components {
+  .modal {
+    @apply fixed top-0 left-0 w-full h-full flex items-center justify-center;
+  }
+
+  .modal-content {
+    @apply bg-white border border-gray-300 rounded shadow-lg;
+  }
+
+  .modal-header {
+    @apply bg-gray-200 border-b border-gray-300 px-4 py-2;
+  }
+
+  .modal-body {
+    @apply px-4 py-2;
+  }
+
+  .modal-footer {
+    @apply bg-gray-200 border-t border-gray-300 px-4 py-2;
+  }
+}
+
+/* Tabs */
+
+@layer components {
+  .tabs {
+    @apply border-b border-gray-300;
+  }
+
+  .tab {
+    @apply inline-block border-l border-t border-r rounded-t py-2 px-4;
+  }
+
+  .tab.active {
+    @apply bg-white;
+  }
+
+  .tab-content {
+    @apply hidden;
+  }
+
+  .tab-content.active {
+    @apply block;
+  }
+}
+
+/* Pagination */
+
+@layer components {
+  .pagination {
+    @apply flex justify-center;
+  }
+
+  .page-item {
+    @apply inline-block px-4 py-2 border border-gray-300;
+  }
+
+  .page-item.active {
+    @apply bg-blue-500 text-white;
+  }
+
+  .page-item.disabled {
+    @apply bg-gray-200 text-gray-500;
+  }
+}
+
+/* Progress Bars */
+
+@layer components {
+  .progress {
+    @apply relative h-2 rounded bg-gray-300;
+  }
+
+  .progress-bar {
+    @apply absolute h-full bg-blue-500 rounded;
+  }
+}
+
+/* Tooltips */
+
+@layer components {
+  .tooltip {
+    @apply relative;
+  }
+
+  .tooltip-text {
+    @apply absolute hidden bg-black text-white text-xs rounded px-2 py-1;
+  }
+
+  .tooltip-text.show {
+    @apply block;
+  }
+}
+
+/* Popovers */
+
+@layer components {
+  .popover {
+    @apply relative;
+  }
+
+  .popover-content {
+    @apply absolute hidden bg-white border border-gray-300 rounded shadow-lg;
+  }
+
+  .popover-content.show {
+    @apply block;
+  }
+}
+
+/* Banner */
+
+@layer components {
+  .banner {
+    @apply bg-blue-500 text-white px-4 py-3;
+  }
+}
+
+/* Breadcrumbs */
+
+@layer components {
+  .breadcrumbs {
+    @apply flex items-center;
+  }
+
+  .breadcrumb {
+    @apply text-blue-500;
+  }
+
+  .breadcrumb.active {
+    @apply text-gray-700;
+  }
+}
+
+/* Chips */
+
+@layer components {
+  .chip {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded;
+  }
+
+  .chip.active {
+    @apply bg-blue-500 text-white;
+  }
+}
+
+/* Tags */
+
+@layer components {
+  .tag {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded;
+  }
+
+  .tag.active {
+    @apply bg-blue-500 text-white;
+  }
+}
+
+/* Badges */
+
+@layer components {
+  .badge {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded;
+  }
+
+  .badge.active {
+    @apply bg-blue-500 text-white;
+  }
+}
+
+/* Avatars */
+
+@layer components {
+  .avatar {
+    @apply rounded-full;
+  }
+}
+
+/* Clipboard */
+
+@layer components {
+  .clipboard {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded;
+  }
+
+  .clipboard.active {
+    @apply bg-blue-500 text-white;
+  }
+}
+
+/* Chat Bubble */
+
+@layer components {
+  .chat-bubble {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded;
+  }
+
+  .chat-bubble.active {
+    @apply bg-blue-500 text-white;
+  }
+}
+
+/* Timeline */
+
+@layer components {
+  .timeline {
+    @apply relative;
+  }
+
+  .timeline-item {
+    @apply relative;
+  }
+
+  .timeline-item:before {
+    @apply absolute bg-gray-200 w-2 h-2 rounded-full;
+  }
+
+  .timeline-item.active:before {
+    @apply bg-blue-500;
+  }
+
+  .timeline-item-content {
+    @apply ml-4;
+  }
+}
+
+/* Ratings */
+
+@layer components {
+  .rating {
+    @apply flex;
+  }
+
+  .rating-item {
+    @apply cursor-pointer;
+  }
+
+  .rating-item.active {
+    @apply text-yellow-500;
+  }
+}
